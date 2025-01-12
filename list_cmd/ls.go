@@ -1,4 +1,4 @@
-package listls
+package list_cmd
 
 import (
 	"fmt"

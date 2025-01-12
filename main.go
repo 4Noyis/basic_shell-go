@@ -3,41 +3,43 @@ package main
 import (
 	"bufio"
 	"fmt"
-	listls "main/list_ls"
+	echocmd "main/echo_cmd"
+	"main/models"
+	typecmd "main/type_cmd"
 	"os"
+	"os/exec"
 )
 
 func main() {
-
-	fmt.Fprint(os.Stdout, "$ ")
-
-	// Wait for user input
-
 	for {
-		reader := bufio.NewReader(os.Stdin)
-		// reads input from the user until it encounters the newline character
-		command, err := reader.ReadString('\n')
-		// removes newline character
-		command = command[:len(command)-1]
-
-		if err != nil {
-			fmt.Fprintln(os.Stderr, "error reading input: ", err)
-			os.Exit(1)
-		}
-
-		switch {
-		case command == "ls":
-
-			listls.Ls()
-
-		case command == "exit":
-			os.Exit(0)
-		default:
-			fmt.Println(command + ": command not found")
-			fmt.Fprint(os.Stdout, "$ ")
-		}
-
 		fmt.Fprint(os.Stdout, "$ ")
+		// Wait for user input
+		input, err := bufio.NewReader(os.Stdin).ReadString('\n')
+		if err != nil {
+			fmt.Println(err.Error())
+		}
+		cmd := models.ParseCmd(input[:len(input)-1])
+		run(cmd)
 	}
+}
 
+var cmd models.Cmd
+
+func run(cmd models.Cmd) {
+	switch cmd.Name {
+	case "echo":
+		echocmd.Echo(cmd)
+	case "type":
+		typecmd.Type(cmd)
+	case "exit":
+		// handleExit(cmd)
+	default:
+		command := exec.Command(cmd.Name, cmd.Args...)
+		command.Stdout = os.Stdout
+		command.Stderr = os.Stderr
+		err := command.Run()
+		if err != nil {
+			fmt.Fprintf(os.Stdout, "%s: command not found\n", cmd.Name)
+		}
+	}
 }
