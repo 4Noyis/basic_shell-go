@@ -3,11 +3,13 @@ package main
 import (
 	"bufio"
 	"fmt"
+	clearcmd "main/clear_cmd"
 	echocmd "main/echo_cmd"
 	exitcmd "main/exit_cmd"
 	"main/models"
 	typecmd "main/type_cmd"
 	"os"
+	"os/exec"
 )
 
 func main() {
@@ -31,8 +33,17 @@ func run(cmd models.Cmd) {
 		typecmd.Type(cmd)
 	case "exit":
 		exitcmd.Exit(cmd)
+	case "clear":
+		clearcmd.Clear()
 	default:
-		fmt.Fprintln(os.Stdout, cmd.Name+": not found")
+		//fmt.Fprintln(os.Stdout, cmd.Name+": not found")
+		command := exec.Command(cmd.Name, cmd.Args[0:]...)
+		command.Stderr = os.Stderr
+		command.Stdout = os.Stdout
+		err := command.Run()
+		if err != nil {
+			fmt.Printf("%s: command not found\n", cmd.Name)
+		}
 
 	}
 }
