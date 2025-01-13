@@ -4,8 +4,8 @@ import "strings"
 
 // Cmd is an exported struct to represent a command
 type Cmd struct {
-	Name string   // Exported field (starts with uppercase)
-	Args []string // Exported field (starts with uppercase)
+	Name string
+	Args []string
 }
 
 func ParseCmd(str string) Cmd {

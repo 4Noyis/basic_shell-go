@@ -4,10 +4,10 @@ import (
 	"bufio"
 	"fmt"
 	echocmd "main/echo_cmd"
+	exitcmd "main/exit_cmd"
 	"main/models"
 	typecmd "main/type_cmd"
 	"os"
-	"os/exec"
 )
 
 func main() {
@@ -23,8 +23,6 @@ func main() {
 	}
 }
 
-var cmd models.Cmd
-
 func run(cmd models.Cmd) {
 	switch cmd.Name {
 	case "echo":
@@ -32,14 +30,9 @@ func run(cmd models.Cmd) {
 	case "type":
 		typecmd.Type(cmd)
 	case "exit":
-		// handleExit(cmd)
+		exitcmd.Exit(cmd)
 	default:
-		command := exec.Command(cmd.Name, cmd.Args...)
-		command.Stdout = os.Stdout
-		command.Stderr = os.Stderr
-		err := command.Run()
-		if err != nil {
-			fmt.Fprintf(os.Stdout, "%s: command not found\n", cmd.Name)
-		}
+		fmt.Fprintln(os.Stdout, cmd.Name+": not found")
+
 	}
 }

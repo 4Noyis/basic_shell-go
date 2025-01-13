@@ -6,7 +6,6 @@ import (
 )
 
 func Echo(command models.Cmd) {
-	//contextSplit := strings.Split(, " ")
 
 	for i := 0; i < len(command.Args); i++ {
 
