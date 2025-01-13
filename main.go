@@ -7,6 +7,7 @@ import (
 	echocmd "main/echo_cmd"
 	exitcmd "main/exit_cmd"
 	"main/models"
+	pwdcmd "main/pwd_cmd"
 	typecmd "main/type_cmd"
 	"os"
 	"os/exec"
@@ -35,6 +36,8 @@ func run(cmd models.Cmd) {
 		exitcmd.Exit(cmd)
 	case "clear":
 		clearcmd.Clear()
+	case "pwd":
+		pwdcmd.Pwd()
 	default:
 		//fmt.Fprintln(os.Stdout, cmd.Name+": not found")
 		command := exec.Command(cmd.Name, cmd.Args[0:]...)

@@ -20,6 +20,8 @@ func Type(command models.Cmd) {
 		fmt.Fprintln(os.Stdout, "type is a shell builtin")
 	case "exit":
 		fmt.Fprintln(os.Stdout, "exit is a shell builtin")
+	case "pwd":
+		fmt.Fprintln(os.Stdout, "pwd is a shell builtin")
 	default:
 		fmt.Fprintln(os.Stdout, arg+": not found")
 	}
