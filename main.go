@@ -3,6 +3,7 @@ package main
 import (
 	"bufio"
 	"fmt"
+	cdcmd "main/cd_cmd"
 	clearcmd "main/clear_cmd"
 	echocmd "main/echo_cmd"
 	exitcmd "main/exit_cmd"
@@ -15,7 +16,8 @@ import (
 
 func main() {
 	for {
-		fmt.Fprint(os.Stdout, "$ ")
+		wd := pwdcmd.HeaderPwd()
+		fmt.Fprint(os.Stdout, wd+" $ ")
 		// Wait for user input
 		input, err := bufio.NewReader(os.Stdin).ReadString('\n')
 		if err != nil {
@@ -33,11 +35,13 @@ func run(cmd models.Cmd) {
 	case "type":
 		typecmd.Type(cmd)
 	case "exit":
-		exitcmd.Exit(cmd)
+		exitcmd.Exit()
 	case "clear":
 		clearcmd.Clear()
 	case "pwd":
 		pwdcmd.Pwd()
+	case "cd":
+		cdcmd.Cd(cmd)
 	default:
 		//fmt.Fprintln(os.Stdout, cmd.Name+": not found")
 		command := exec.Command(cmd.Name, cmd.Args[0:]...)

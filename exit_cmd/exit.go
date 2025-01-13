@@ -1,10 +1,9 @@
 package exitcmd
 
 import (
-	"main/models"
 	"os"
 )
 
-func Exit(command models.Cmd) {
+func Exit() {
 	os.Exit(0)
 }

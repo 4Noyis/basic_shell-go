@@ -26,11 +26,3 @@ func Type(command models.Cmd) {
 		fmt.Fprintln(os.Stdout, arg+": not found")
 	}
 }
-
-// var arg string
-// if command.Args != nil {
-
-// } else {
-// 	fmt.Printf("wrong usage")
-// 	os.Exit(1)
-// }
