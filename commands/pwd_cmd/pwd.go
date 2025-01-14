@@ -15,7 +15,7 @@ func Pwd() {
 	fmt.Fprintln(os.Stdout, pwd)
 }
 
-func HeaderPwd() string {
+func WorkingDir() string {
 	wd, err := os.Getwd()
 	if err != nil {
 		fmt.Println(err)
