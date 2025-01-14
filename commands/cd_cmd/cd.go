@@ -14,6 +14,4 @@ func Cd(command models.Cmd) {
 		os.Chdir(command.Args[0])
 	}
 
-	//dir := command.Args[0]
-
 }
