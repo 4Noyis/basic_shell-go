@@ -3,10 +3,11 @@ package main
 import (
 	"bufio"
 	"fmt"
-	"main/cmd/app"
-	wd "main/commands/pwd_cmd"
-	"main/models"
 	"os"
+
+	"github.com/4Noyis/basic_shell-go/cmd/app"
+	wd "github.com/4Noyis/basic_shell-go/commands/pwd_cmd"
+	"github.com/4Noyis/basic_shell-go/models"
 )
 
 func main() {

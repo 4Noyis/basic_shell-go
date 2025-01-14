@@ -1,8 +1,9 @@
 package cdcmd
 
 import (
-	"main/models"
 	"os"
+
+	"github.com/4Noyis/basic_shell-go/models"
 )
 
 func Cd(command models.Cmd) {

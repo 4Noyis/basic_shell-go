@@ -2,7 +2,8 @@ package echocmd
 
 import (
 	"fmt"
-	"main/models"
+
+	"github.com/4Noyis/basic_shell-go/models"
 )
 
 func Echo(command models.Cmd) {

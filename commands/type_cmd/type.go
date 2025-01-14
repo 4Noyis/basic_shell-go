@@ -2,8 +2,9 @@ package typecmd
 
 import (
 	"fmt"
-	"main/models"
 	"os"
+
+	"github.com/4Noyis/basic_shell-go/models"
 )
 
 func Type(command models.Cmd) {

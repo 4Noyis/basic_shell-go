@@ -2,15 +2,16 @@ package app
 
 import (
 	"fmt"
-	cdcmd "main/commands/cd_cmd"
-	clearcmd "main/commands/clear_cmd"
-	echocmd "main/commands/echo_cmd"
-	exitcmd "main/commands/exit_cmd"
-	pwdcmd "main/commands/pwd_cmd"
-	typecmd "main/commands/type_cmd"
-	"main/models"
 	"os"
 	"os/exec"
+
+	cdcmd "github.com/4Noyis/basic_shell-go/commands/cd_cmd"
+	clearcmd "github.com/4Noyis/basic_shell-go/commands/clear_cmd"
+	echocmd "github.com/4Noyis/basic_shell-go/commands/echo_cmd"
+	exitcmd "github.com/4Noyis/basic_shell-go/commands/exit_cmd"
+	pwdcmd "github.com/4Noyis/basic_shell-go/commands/pwd_cmd"
+	typecmd "github.com/4Noyis/basic_shell-go/commands/type_cmd"
+	"github.com/4Noyis/basic_shell-go/models"
 )
 
 func Run(cmd models.Cmd) {
