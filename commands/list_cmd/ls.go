@@ -21,7 +21,7 @@ func Ls(command models.Cmd) {
 		for _, dirName := range command.Args {
 			files, err := os.ReadDir(dirName)
 			if err != nil {
-				fmt.Fprintln(os.Stdout, red, err, reset)
+				fmt.Fprint(os.Stdout, red, err, reset+"\n")
 				return
 			}
 
