@@ -21,7 +21,7 @@ func Ls(command models.Cmd) {
 		for _, dirName := range command.Args {
 			files, err := os.ReadDir(dirName)
 			if err != nil {
-				fmt.Fprint(os.Stdout, red, err, reset+"\n")
+				fmt.Fprint(os.Stderr, red, err, reset+"\n")
 				return
 			}
 
@@ -35,7 +35,7 @@ func Ls(command models.Cmd) {
 func run(file []os.DirEntry, lastArg string, color string, reset string) {
 	wd, err := os.Getwd()
 	if err != nil {
-		fmt.Println("Error getting working directory:", err)
+		fmt.Fprintln(os.Stderr, "Error getting working directory:", err)
 		return
 	}
 

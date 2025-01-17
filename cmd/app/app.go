@@ -16,6 +16,9 @@ import (
 )
 
 func Run(cmd models.Cmd) {
+	reset := models.Reset
+	red := models.Red
+
 	switch cmd.Name {
 	case "echo":
 		echocmd.Echo(cmd)
@@ -38,7 +41,7 @@ func Run(cmd models.Cmd) {
 		command.Stdout = os.Stdout
 		err := command.Run()
 		if err != nil {
-			fmt.Printf("%s: command not found\n", cmd.Name)
+			fmt.Fprintln(os.Stderr, red, cmd.Name, ": command not found", reset)
 		}
 
 	}

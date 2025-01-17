@@ -2,7 +2,7 @@ package models
 
 import "strings"
 
-// Cmd is an exported struct to represent a command
+// Flag ?=
 type Cmd struct {
 	Name string
 	Args []string
