@@ -5,6 +5,7 @@ import (
 	"os"
 	"os/exec"
 
+	catcmd "github.com/4Noyis/basic_shell-go/commands/cat_cmd"
 	cdcmd "github.com/4Noyis/basic_shell-go/commands/cd_cmd"
 	clearcmd "github.com/4Noyis/basic_shell-go/commands/clear_cmd"
 	echocmd "github.com/4Noyis/basic_shell-go/commands/echo_cmd"
@@ -34,6 +35,8 @@ func Run(cmd models.Cmd) {
 		cdcmd.Cd(cmd)
 	case "ls":
 		listcmd.Ls(cmd)
+	case "cat":
+		catcmd.Cat()
 	default:
 		//fmt.Fprintln(os.Stdout, cmd.Name+": not found")
 		command := exec.Command(cmd.Name, cmd.Args[0:]...)
