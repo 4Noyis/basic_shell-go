@@ -36,7 +36,7 @@ func Run(cmd models.Cmd) {
 	case "ls":
 		listcmd.Ls(cmd)
 	case "cat":
-		catcmd.Cat()
+		catcmd.Cat(cmd)
 	default:
 		//fmt.Fprintln(os.Stdout, cmd.Name+": not found")
 		command := exec.Command(cmd.Name, cmd.Args[0:]...)
