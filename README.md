@@ -62,4 +62,3 @@ $ python3 script.py
 - **`commands/`**: Implements the built-in commands.
 - **`utils/`**: Helper functions for common operations.
 
----
