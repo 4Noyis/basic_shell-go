@@ -16,6 +16,7 @@ func main() {
 		fmt.Fprint(os.Stdout, wd+" $ ")
 		// Wait for user input
 		input, err := bufio.NewReader(os.Stdin).ReadString('\n')
+
 		if err != nil {
 			fmt.Println(err.Error())
 		}
