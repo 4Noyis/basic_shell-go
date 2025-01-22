@@ -3,6 +3,20 @@
 Welcome to my custom shell project. This shell is built from scratch using Go and includes implementations of several basic shell commands. Additionally, it can execute external programs with arguments, making it a versatile tool for command-line interactions.
 
 ---
+## Docker Hub
+
+This project is also available as a Docker image on [Docker Hub](https://hub.docker.com/r/noyis/custom-shell).
+
+### Pull the Docker Image
+To pull the prebuilt image from Docker Hub:
+```bash
+docker pull noyis/custom-shell
+```
+### Run the Docker Image
+To run the shell program from the Docker image:
+```bash
+docker run -it <your-dockerhub-username>/basic_shell-go
+```
 
 ## Features
 
